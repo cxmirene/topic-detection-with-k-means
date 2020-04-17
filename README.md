@@ -1,4 +1,4 @@
-# 邮件分类（贝叶斯+SVM）
+# 话题检测（K-means、K-means++）
 
 ## topic.py
 
@@ -29,6 +29,7 @@ optional arguments:                                                             
   --iter ITER           最大迭代次数，默认100
   --threshold THRESHOLD    停止条件，默认0.0005
   --times TIMES         测试次数，默认1
+  --choose CHOOSE       K-means（1）和K-means++（2）的选择，默认K-means++
 ```
 
 - 使用方法为：
@@ -54,3 +55,5 @@ python topic.py --times 10
 注意的是，你放入的文件需要以用诸如上面图片中的文件的命名格式来命名，即类别-xxxxx.txt，包括测试的文件也是的。
 
 具体可以参考放入的train30和test两个文件夹
+
+最后，注意，测试的时候，先需要输入你选择第几次聚类的结果，并为每一个簇进行命名，命名的名字就是类别（这可以参考excel的结果）

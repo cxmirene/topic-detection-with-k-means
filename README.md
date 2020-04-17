@@ -34,7 +34,7 @@ optional arguments:                                                             
 - 使用方法为：
 
 ```
-python bayes.py --times 10
+python topic.py --times 10
 ```
 
 - 结果：

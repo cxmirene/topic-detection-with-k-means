@@ -328,7 +328,7 @@ class Topic_Detecton():
         plt.clf()
 
 
-    def test(self, times):
+    def test(self, times, choose):
         plt.rcParams['font.family'] = ['sans-serif']
         plt.rcParams['font.sans-serif'] = ['SimHei']
         plt.rcParams['axes.unicode_minus']=False
@@ -346,7 +346,10 @@ class Topic_Detecton():
             self.profile_total.setdefault(i+1,[])
             for _ in range(self.cluster):
                 self.profile_total[i+1].append([])
-            self.K_Means_pp()
+            if choose==1:
+                self.K_Means()
+            else:
+                self.K_Means_pp()
             print(self.SSE_total[i+1])
             if self.SSE_total[i+1][-1]<min_sse:
                 min_sse = self.SSE_total[i+1][-1]
@@ -407,10 +410,11 @@ parser.add_argument("--K",type=int,default=6,help="K值")
 parser.add_argument("--iter",type=int,default=100,help="最大迭代次数")
 parser.add_argument("--threshold",type=float,default=0.0005,help="停止条件")
 parser.add_argument("--times",type=int,default=1,help="测试次数")
+parser.add_argument("--choose",type=int,default=2,help="K-means（1）和K-means++（2）的选择")
 args = parser.parse_args()
 
 detection = Topic_Detecton(args.train_path, args.K, args.iter, args.threshold)
-detection.test(args.times)
+detection.test(args.times, args.choose)
 detection.predict(args.test_path)
 
 
